@@ -1,0 +1,41 @@
+MODULE MainModule
+    CONST robtarget Target_10:=[[-5.796142752,162.821224396,131.705439885],[0.225816146,-0.12531745,-0.965546941,-0.031964186],[0,0,0,11],[107.815871411,9E9,9E9,9E9,9E9,9E9]];
+	CONST robtarget Target_20:=[[-5.796142752,162.821224396,131.705439885],[0.225816146,-0.12531745,-0.965546941,-0.031964186],[0,0,0,11],[107.815871411,9E9,9E9,9E9,9E9,9E9]];
+	CONST robtarget Target_30:=[[17.537213841,197.372755875,131.705454641],[0.225816383,-0.125317561,-0.965546866,-0.03196436],[-1,0,-1,11],[107.81587603,9E9,9E9,9E9,9E9,9E9]];
+	CONST robtarget Target_40:=[[17.537340045,311.589747693,131.705472255],[0.225816532,-0.125317638,-0.965546817,-0.031964469],[-1,0,-1,11],[107.81587181,9E9,9E9,9E9,9E9,9E9]];
+	CONST robtarget Target_50:=[[17.537424742,311.58994405,20.923953113],[0.225816671,-0.125317711,-0.965546772,-0.031964557],[-1,0,-1,11],[107.815880875,9E9,9E9,9E9,9E9,9E9]];
+	CONST robtarget Target_60:=[[17.537505696,297.158360096,20.924019743],[0.225816857,-0.125317746,-0.965546721,-0.031964657],[-1,0,-1,11],[107.815876582,9E9,9E9,9E9,9E9,9E9]];
+    PROC main()
+        MoveL Target_10,v1000,z100,VacuumTwo\WObj:=wobj0;
+        WaitTime 1;
+	    MoveL Target_20,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_30,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_40,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_50,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_60,v1000,z100,VacuumTwo\WObj:=wobj0;
+        WaitTime 1;
+        
+        Hand_Initialize \Calibrate;
+        TPWrite "hand connected: " \Num:=hand_VirtuallyConnected_L;
+        TPWrite "hand connected: " \Num:=hand_VirtuallyConnected_R;
+        Hand_MoveTo 15; 
+        WaitTime 3;
+        Hand_MoveTo 5;
+        WaitTime 3;
+        
+	    MoveL Target_50,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_40,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_30,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_20,v1000,z100,VacuumTwo\WObj:=wobj0;
+	    WaitTime 1;
+        MoveL Target_10,v1000,z100,VacuumTwo\WObj:=wobj0;
+        WaitTime 1;
+    ENDPROC
+ENDMODULE
