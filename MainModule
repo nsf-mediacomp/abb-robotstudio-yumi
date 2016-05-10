@@ -1,41 +1,70 @@
 MODULE MainModule
-    CONST robtarget Target_10:=[[-5.796142752,162.821224396,131.705439885],[0.225816146,-0.12531745,-0.965546941,-0.031964186],[0,0,0,11],[107.815871411,9E9,9E9,9E9,9E9,9E9]];
-	CONST robtarget Target_20:=[[-5.796142752,162.821224396,131.705439885],[0.225816146,-0.12531745,-0.965546941,-0.031964186],[0,0,0,11],[107.815871411,9E9,9E9,9E9,9E9,9E9]];
-	CONST robtarget Target_30:=[[17.537213841,197.372755875,131.705454641],[0.225816383,-0.125317561,-0.965546866,-0.03196436],[-1,0,-1,11],[107.81587603,9E9,9E9,9E9,9E9,9E9]];
-	CONST robtarget Target_40:=[[17.537340045,311.589747693,131.705472255],[0.225816532,-0.125317638,-0.965546817,-0.031964469],[-1,0,-1,11],[107.81587181,9E9,9E9,9E9,9E9,9E9]];
-	CONST robtarget Target_50:=[[17.537424742,311.58994405,20.923953113],[0.225816671,-0.125317711,-0.965546772,-0.031964557],[-1,0,-1,11],[107.815880875,9E9,9E9,9E9,9E9,9E9]];
-	CONST robtarget Target_60:=[[17.537505696,297.158360096,20.924019743],[0.225816857,-0.125317746,-0.965546721,-0.031964657],[-1,0,-1,11],[107.815876582,9E9,9E9,9E9,9E9,9E9]];
     PROC main()
-        MoveL Target_10,v1000,z100,VacuumTwo\WObj:=wobj0;
-        WaitTime 1;
-	    MoveL Target_20,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_30,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_40,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_50,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_60,v1000,z100,VacuumTwo\WObj:=wobj0;
-        WaitTime 1;
+        CONST robtarget pickdrop10_target:=[[-286.795977158,139.821363832,94.70546914],[0.225815852,-0.125317423,-0.965547007,-0.031964383],[0,0,0,11],[107.815864494,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop20_target:=[[-286.79592454,224.962159493,94.705472761],[0.225815831,-0.12531745,-0.965547004,-0.031964518],[-1,-1,-1,11],[107.815845293,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop30_target:=[[-122.315861653,224.962574404,94.705436837],[0.225816202,-0.125317385,-0.965546924,-0.031964578],[-1,0,-1,11],[107.815886778,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop40_target:=[[-122.31571123,224.962972738,94.705420533],[0.225816313,-0.125317389,-0.965546885,-0.03196495],[-1,-1,0,11],[159.548222181,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop50_target:=[[-122.31572843,7.736840838,94.70519366],[0.225816823,-0.125318222,-0.965546646,-0.031965282],[-1,-2,1,11],[159.548273269,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop60_target:=[[-73.911208196,7.737668983,67.669086056],[0.287410528,-0.127113359,-0.949035728,-0.023844694],[-1,-2,1,11],[159.548230755,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop70_target:=[[-73.910842346,7.738393488,148.073276449],[0.287410767,-0.127112958,-0.94903569,-0.023845465],[-1,-2,1,11],[159.548207796,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop80_target:=[[-73.910511523,7.738808239,148.072998504],[0.688486232,-0.124003809,-0.713625006,0.036730289],[-1,-3,1,11],[159.548215282,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop90_target:=[[-84.47776735,7.739485104,148.072749798],[0.688486257,-0.124002939,-0.713625177,0.036729441],[-1,-3,1,11],[159.548258985,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop100_target:=[[-84.477563836,7.739650304,84.371865576],[0.688486035,-0.124003433,-0.713625322,0.0367291],[-1,-3,1,11],[159.548250818,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop110_target:=[[-84.477523171,7.739786775,167.500367565],[0.68848606,-0.124003557,-0.713625286,0.036728918],[-1,-3,1,11],[159.548252075,9E9,9E9,9E9,9E9,9E9]];
+	    CONST robtarget pickdrop120_target:=[[-84.477164201,260.456164084,167.500414084],[0.688485777,-0.124004143,-0.713625486,0.036728383],[-1,-3,1,11],[159.548254085,9E9,9E9,9E9,9E9,9E9]];
         
         Hand_Initialize \Calibrate;
         TPWrite "hand connected: " \Num:=hand_VirtuallyConnected_L;
         TPWrite "hand connected: " \Num:=hand_VirtuallyConnected_R;
-        Hand_MoveTo 15; 
-        WaitTime 3;
-        Hand_MoveTo 5;
+        TPWrite "opening hand!";
+        Hand_MoveTo 20; 
         WaitTime 3;
         
-	    MoveL Target_50,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_40,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_30,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_20,v1000,z100,VacuumTwo\WObj:=wobj0;
-	    WaitTime 1;
-        MoveL Target_10,v1000,z100,VacuumTwo\WObj:=wobj0;
+        TPWrite "moving to box";
+        MoveL pickdrop10_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
         WaitTime 1;
+	    MoveL pickdrop20_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop30_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop40_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop50_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop60_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop70_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop80_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop90_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+	    MoveL pickdrop100_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        WaitTime 1;
+        
+        TPWrite "closing hand on box";
+        Hand_MoveTo 18;
+        WaitTime 3;
+        
+        TPWrite "moving box away";
+	    MoveL pickdrop110_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+	    MoveL pickdrop120_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        
+        TPWrite "opening hand, dropping box";
+        Hand_MoveTo 20;
+        WaitTime 3;
+        
+        TPWrite "moving back to home";
+        MoveL pickdrop110_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop100_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop90_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop80_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop70_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop60_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop50_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop40_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop30_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop20_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
+        MoveL pickdrop10_target,v100,z10,VacuumTwo\WObj:=Workobject_1;
     ENDPROC
 ENDMODULE
